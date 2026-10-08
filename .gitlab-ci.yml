@@ -1,0 +1,6 @@
+pages:
+  image: busybox
+  script:
+    - mkdir public && cp -r index.html data public/
+  artifacts:
+    paths: [public]
