@@ -1,7 +1,9 @@
 # Dépression et anxiété : qui est le plus exposé ?
 
-**Équipe :** Dieu-Donné FIANKO, Faustine DESSI
-**Mail(s) de contact :** dieudonne.fianko1@gmail.com, abla.dessi02@gmail.com
+**Équipe :** Dieu-Donné FIANKO, Faustine DESSI 
+
+**Mail(s) de contact :** dieudonne.fianko1@gmail.com, abla.dessi02@gmail.com 
+
 **Défi :** Défi 1 — Santé mentale
 
 ## Notre question
@@ -10,9 +12,9 @@ La dépression et l'anxiété concernent-elles tout le monde de la même façon,
 
 ## Notre visualisation
 
-Site web interactif, statique et sans dépendance externe : **[À COMPLÉTER : lien du site en ligne]**
+Site web interactif, statique et sans dépendance externe : https://phoenix-laboratoire.github.io/dieudo_faustine_Odisse_Dataviz_Challenge_2026/
 
-Code source : **[À COMPLÉTER : lien du dépôt public, si existant]**
+Code source : https://github.com/phoenix-laboratoire/dieudo_faustine_Odisse_Dataviz_Challenge_2026
 
 Il propose :
 - une carte des régions (métropole et DROM) pour les épisodes dépressifs (filtrables par sexe et par âge) et pour le trouble anxieux généralisé ;
@@ -49,4 +51,3 @@ Ce projet est publié sous licences libres :
 | Contenus textuels et visuels | Creative Commons CC-BY 4.0 |
 
 Les données issues d'Odissé sont disponibles sous Licence Ouverte 2.0 ; leur réutilisation doit respecter cette licence.
-# dieudo_faustine_Odisse_Dataviz_Challenge_2026
