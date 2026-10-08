@@ -1,0 +1,184 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Dépression et anxiété : qui est le plus exposé ? · Baromètre 2024</title>
+<meta name="description" content="Explorer les épisodes dépressifs et le trouble anxieux généralisé en France selon la région, le sexe, l'âge et la situation sociale (Baromètre de Santé publique France 2024).">
+<style>
+:root{--fond:#f4f7f8;--encre:#17303b;--doux:#5d7480;--trait:#d5dfe3;--F:#b8466f;--H:#2c6a9c;--c0:#e3f0f3;--c1:#17566e}
+*{box-sizing:border-box}
+body{margin:0;background:var(--fond);color:var(--encre);font:1rem/1.6 system-ui,-apple-system,"Segoe UI",sans-serif}
+h1,h2,h3{font-family:Charter,"Iowan Old Style",Georgia,serif;line-height:1.2;margin:0 0 .6rem}
+h1{font-size:clamp(1.9rem,5vw,3rem)} h2{font-size:1.55rem} h3{font-size:1.05rem;margin:1.4rem 0 .3rem}
+a{color:inherit} :focus-visible{outline:3px solid var(--H);outline-offset:2px}
+.aide{position:sticky;top:0;z-index:5;background:var(--encre);color:#fff;text-align:center;padding:.45rem 1rem;font-size:.92rem}
+.aide a{font-weight:700}
+.w{max-width:62rem;margin:0 auto;padding:0 1.1rem}
+header{padding:3rem 0 1.5rem}
+.lead{font-size:1.15rem;max-width:42rem}.lead b{font-family:Charter,Georgia,serif;font-size:1.25em}
+section{padding:2.2rem 0;border-top:1px solid var(--trait)}
+.sub-t{color:var(--doux);max-width:44rem;margin:0 0 1rem}
+.ctl{display:flex;flex-wrap:wrap;gap:.6rem;align-items:center;margin:.8rem 0}
+.tab{border:1px solid var(--encre);background:transparent;color:inherit;padding:.4rem .9rem;border-radius:2rem;font:inherit;cursor:pointer}
+.tab[aria-pressed=true]{background:var(--encre);color:#fff}
+select{font:inherit;padding:.35rem .5rem;border:1px solid var(--doux);border-radius:.4rem;background:#fff;color:inherit}
+select:disabled{opacity:.45}
+.grid{display:grid;gap:1.5rem}
+@media(min-width:820px){.grid{grid-template-columns:minmax(0,1fr) minmax(0,1fr);align-items:start}}
+svg{width:100%;height:auto;display:block}
+.reg{stroke:#fff;stroke-width:1.2;cursor:pointer;transition:fill .25s}
+.reg.sel{stroke:var(--encre);stroke-width:2.4}
+.fr{fill:none;stroke:var(--trait);stroke-dasharray:3 3}
+.leg{display:flex;align-items:center;gap:.5rem;font-size:.85rem;color:var(--doux);margin:.5rem 0}
+.leg i{flex:0 0 9rem;height:.6rem;border-radius:.3rem}
+.pr{display:grid;grid-template-columns:minmax(6rem,38%) 1fr auto;gap:.6rem;align-items:center;padding:.28rem .3rem;border-radius:.4rem;font-size:.92rem}
+.pr.cl{cursor:pointer}.pr.cl:hover,.pr.on{background:#e6edf0}
+.l{line-height:1.25}.v{font-variant-numeric:tabular-nums;color:var(--doux);text-align:right;font-size:.85rem;min-width:5.2rem}
+.tk{display:block}.sub{position:relative;display:block;height:.8rem}
+.ci{position:absolute;top:.37rem;height:.08rem;background:var(--doux);opacity:.55;min-width:2px}
+.dot{position:absolute;top:.1rem;width:.6rem;height:.6rem;margin-left:-.3rem;background:var(--encre)}
+.dot.F{background:var(--F);border-radius:50%}.dot.H{background:var(--H)}.dot.T{border-radius:50%}
+.k{font-size:.85rem;color:var(--doux);display:flex;gap:1rem;flex-wrap:wrap;margin:.3rem 0 .8rem}
+.k b{display:inline-block;width:.6rem;height:.6rem;margin-right:.3rem}
+.bd{font-size:.72rem;border:1px solid var(--doux);border-radius:1rem;padding:0 .4rem;margin-left:.3rem;white-space:nowrap}
+.note{background:#fff;border-left:4px solid var(--doux);padding:.8rem 1rem;max-width:44rem;font-size:.95rem}
+ul.lim{max-width:44rem;padding-left:1.2rem}
+footer{padding:2rem 0 3rem;color:var(--doux);font-size:.88rem;border-top:1px solid var(--trait)}
+</style>
+</head>
+<body>
+<div class="aide">Besoin de parler ? Le <a href="tel:3114">3114</a> est le numéro national de prévention du suicide : gratuit, 24 h/24.</div>
+<div class="w">
+<header>
+  <h1>Dépression et anxiété : qui est le plus exposé ?</h1>
+  <p class="lead" id="lead">Chargement des données…</p>
+  <p class="sub-t">Baromètre de Santé publique France 2024, adultes de 18 à 79 ans. Les chiffres sont des estimations issues d'une enquête déclarative, avec une marge d'incertitude.</p>
+</header>
+
+<section id="carte">
+  <h2>Une carte des régions</h2>
+  <p class="sub-t">Choisissez l'indicateur, puis cliquez sur une région pour la suivre dans la suite de la page.</p>
+  <div class="ctl" role="group" aria-label="Indicateur">
+    <button class="tab" data-i="dep" aria-pressed="true">Épisode dépressif</button>
+    <button class="tab" data-i="anx" aria-pressed="false">Anxiété généralisée</button>
+    <label>Sexe <select id="sx"><option value="Tous">Tous</option><option value="F">Femmes</option><option value="H">Hommes</option></select></label>
+    <label>Âge <select id="ag"></select></label>
+  </div>
+  <p class="sub-t" id="msg"></p>
+  <div class="grid">
+    <div><svg id="map" role="group" aria-label="Carte des régions de France"></svg>
+      <div class="leg"><span id="l0"></span><i id="lg"></i><span id="l1"></span><span>· gris : donnée absente</span></div></div>
+    <div><h3 style="margin-top:0" id="lt"></h3><div id="rk"></div></div>
+  </div>
+</section>
+
+<section id="profils">
+  <h2>Qui est le plus concerné par l'anxiété ?</h2>
+  <p class="sub-t">France entière. Pour chaque catégorie, la prévalence des femmes et celle des hommes. Les caractéristiques se lisent une par une : on ne peut pas isoler l'effet de l'une en neutralisant les autres.</p>
+  <div class="k"><span><b style="background:var(--F);border-radius:50%"></b>Femmes</span><span><b style="background:var(--H)"></b>Hommes</span><span>Trait : intervalle de confiance à 95 %</span></div>
+  <div id="pf"></div>
+</section>
+
+<section id="age">
+  <h2>Épisode dépressif : âge et sexe dans une région</h2>
+  <p class="sub-t">Région : <select id="rg"></select></p>
+  <div class="k"><span><b style="background:var(--F);border-radius:50%"></b>Femmes</span><span><b style="background:var(--H)"></b>Hommes</span><span>Trait : intervalle de confiance à 95 %</span></div>
+  <div id="ad"></div>
+</section>
+
+<section id="limites">
+  <h2>Lire avec prudence</h2>
+  <ul class="lim">
+    <li>C'est une photographie de 2024 : elle ne dit rien de l'évolution dans le temps.</li>
+    <li>Quand deux intervalles de confiance se chevauchent, l'écart observé peut venir du hasard de l'échantillon.</li>
+    <li>Dépression et anxiété sont mesurées différemment : les deux cartes ont chacune leur échelle et ne se comparent pas en niveau.</li>
+    <li>Ces données décrivent des écarts, pas des causes. Les effectifs sont plus faibles dans les petites régions et dans certains croisements.</li>
+    <li>Mayotte n'est pas couverte par le Baromètre.</li>
+  </ul>
+  <p class="note">Si vous traversez une période difficile, vous pouvez appeler le <a href="tel:3114"><b>3114</b></a> à tout moment, ou en parler à votre médecin.</p>
+</section>
+<footer>Source : Santé publique France, Baromètre 2024, portail <a href="https://odisse.santepubliquefrance.fr/">Odissé</a>. Fonds de carte : IGN / <a href="https://github.com/gregoiredavid/france-geojson">france-geojson</a>. Réalisé pour l'Odissé Dataviz Challenge 2026 · code et données dans ce dépôt.</footer>
+</div>
+<script>
+const DIMS=['Sexe',"Classe d'âge",'PCS','Diplôme','Type de ménage','Situation professionnelle','Situation financière perçue'];
+const DT={'Sexe':'Sexe',"Classe d'âge":'Âge','PCS':'Catégorie socioprofessionnelle','Diplôme':'Diplôme','Type de ménage':'Type de ménage','Situation professionnelle':'Situation professionnelle','Situation financière perçue':'Situation financière perçue'};
+const SD={Tous:'Tous',F:'Une femme',H:'Un homme'};
+const IND={dep:{n:'Épisodes dépressifs caractérisés',c0:'#e3f0f3',c1:'#17566e'},anx:{n:'Trouble anxieux généralisé',c0:'#f1e6ee',c1:'#6b2f5f'}};
+const $=s=>document.querySelector(s), fmt=x=>x.toFixed(1).replace('.',',');
+const norm=s=>s.normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase().replace(/^(la|le) /,'').replace(/[^a-z]/g,'');
+const num=r=>({v:+r.Estimation,lo:+r.ic_inf,hi:+r.ic_sup,n:+r['Effectif Brut']});
+const nd=r=>DIMS.filter(d=>r[d]!=='Tous');
+function csv(t){const rows=[];let r=[],f='',q=false;t=t.replace(/^\uFEFF/,'');
+ for(let i=0;i<t.length;i++){const c=t[i];
+  if(q){if(c=='"'){if(t[i+1]=='"'){f+='"';i++}else q=false}else f+=c}
+  else if(c=='"')q=true;else if(c==','){r.push(f);f=''}else if(c=='\n'){r.push(f.replace(/\r$/,''));rows.push(r);r=[];f=''}else f+=c}
+ if(f||r.length){r.push(f);rows.push(r)}
+ const h=rows[0].map(x=>x.trim());
+ return rows.slice(1).filter(r=>r.length>1).map(r=>Object.fromEntries(h.map((k,i)=>[k,(r[i]||'').trim()])))}
+const lerp=(a,b,t)=>{const p=h=>[1,3,5].map(i=>parseInt(h.slice(i,i+2),16));const A=p(a),B=p(b);return'rgb('+A.map((x,i)=>Math.round(x+(B[i]-x)*t)).join()+')'};
+const row=(label,ser,max,txt,extra='')=>`<div class="pr ${extra}"><span class="l">${label}</span><span class="tk">${ser.map(([k,o])=>`<span class="sub"><i class="ci" style="left:${o.lo/max*100}%;width:${(o.hi-o.lo)/max*100}%"></i><b class="dot ${k}" style="left:${o.v/max*100}%"></b></span>`).join('')}</span><span class="v">${txt}</span></div>`;
+
+let D,A,G,NA,NAME={},CODE={},st={i:'dep',sx:'Tous',ag:'Tous',sel:'11'};
+
+function vals(){const m={};
+ if(st.i=='dep')D.filter(r=>r.Sexe==SD[st.sx]&&r["Classe d'âge"]==st.ag).forEach(r=>m[r['Nouvelles régions']]=num(r));
+ else A.filter(r=>r['Nouvelles régions']!=='Tous'&&!nd(r).length).forEach(r=>{const c=CODE[norm(r['Nouvelles régions'])];if(c)m[c]={...num(r),diff:r['Différence avec les autres régions']}});
+ return m}
+
+function paint(){
+ const V=vals(),k=IND[st.i],all=Object.values(V).map(o=>o.v),lo=Math.min(...all),hi=Math.max(...all);
+ document.querySelectorAll('.tab').forEach(b=>b.setAttribute('aria-pressed',b.dataset.i==st.i));
+ $('#sx').disabled=$('#ag').disabled=st.i=='anx';
+ $('#msg').textContent=st.i=='anx'?"Pour l'anxiété, les données régionales sont publiées tous âges et tous sexes confondus. Les filtres sont donc désactivés.":'';
+ $('#lg').style.background=`linear-gradient(90deg,${k.c0},${k.c1})`;$('#l0').textContent=fmt(lo)+' %';$('#l1').textContent=fmt(hi)+' %';
+ G.regions.forEach(r=>{const p=$('#p'+r.c),o=V[r.c];
+  p.style.fill=o?lerp(k.c0,k.c1,hi>lo?(o.v-lo)/(hi-lo):.5):'#c9d2d6';
+  p.classList.toggle('sel',r.c==st.sel);
+  const t=r.n+' : '+(o?fmt(o.v)+' %':'donnée absente');p.setAttribute('aria-label',t);p.firstChild.textContent=t});
+ $('#lt').textContent=k.n+' (%), par région';
+ const max=Math.max(...Object.values(V).map(o=>o.hi))*1.05;
+ $('#rk').innerHTML=Object.entries(V).sort((a,b)=>b[1].v-a[1].v).map(([c,o])=>
+  row(NAME[c],[['T',o]],max,fmt(o.v)+' %'+(o.diff&&o.diff!=='Pas de différence significative'?`<span class="bd">${o.diff}</span>`:''),'cl'+(c==st.sel?' on':'')).replace('<div','<div data-c="'+c+'" tabindex="0" role="button"')).join('');
+ $('#rg').value=st.sel;ages()}
+
+function ages(){
+ const ls=D.filter(r=>r['Nouvelles régions']==st.sel&&r.Sexe!=='Tous').map(r=>r),max=Math.max(...ls.map(r=>+r.ic_sup))*1.05;
+ const ord=[...new Set(D.map(r=>r["Classe d'âge"]))].sort((a,b)=>a=='Tous'?-1:b=='Tous'?1:a.localeCompare(b));
+ $('#ad').innerHTML=ord.map(a=>{const f=D.find(r=>r['Nouvelles régions']==st.sel&&r["Classe d'âge"]==a&&r.Sexe==SD.F),h=D.find(r=>r['Nouvelles régions']==st.sel&&r["Classe d'âge"]==a&&r.Sexe==SD.H);
+  return f&&h?row(a=='Tous'?'Tous âges':a,[['F',num(f)],['H',num(h)]],max,`F ${fmt(+f.Estimation)} · H ${fmt(+h.Estimation)}`):''}).join('')}
+
+function profils(){
+ $('#pf').innerHTML=DIMS.map(d=>{
+  const cats=NA.filter(r=>nd(r).length==1&&nd(r)[0]==d).map(r=>({l:r[d],all:num(r)}));
+  cats.forEach(c=>{if(d=='Sexe')c[c.l=='Femmes'?'F':'H']=c.all;else for(const [s,x] of [['Femmes','F'],['Hommes','H']]){const r=NA.find(r=>r.Sexe==s&&r[d]==c.l&&nd(r).length==2);if(r)c[x]=num(r)}});
+  cats.sort((a,b)=>d=="Classe d'âge"?a.l.localeCompare(b.l):b.all.v-a.all.v);
+  const max=Math.max(...cats.flatMap(c=>[c.F,c.H,c.all].filter(Boolean).map(o=>o.hi)))*1.05;
+  return `<h3>${DT[d]}</h3>`+cats.map(c=>row(c.l,[['F',c.F],['H',c.H]].filter(x=>x[1]),max,[c.F&&'F '+fmt(c.F.v),c.H&&'H '+fmt(c.H.v)].filter(Boolean).join(' · '))).join('')}).join('')}
+
+function lead(){
+ const g=(d,l)=>NA.find(r=>nd(r).length==1&&nd(r)[0]==d&&l(r[d]));
+ const F=g('Sexe',x=>x=='Femmes'),H=g('Sexe',x=>x=='Hommes'),J=g("Classe d'âge",x=>x=='18-29 ans'),O=g("Classe d'âge",x=>x=='70-79 ans'),
+  P=g('Situation financière perçue',x=>x.startsWith('Vous y arrivez')),R=g('Situation financière perçue',x=>x.startsWith('Vous êtes'));
+ if(F&&H&&J&&O&&P&&R)$('#lead').innerHTML=`Non, ni la dépression ni l'anxiété ne touchent tout le monde de la même façon. Pour l'anxiété généralisée : <b>${fmt(+F.Estimation)} %</b> des femmes contre <b>${fmt(+H.Estimation)} %</b> des hommes ; <b>${fmt(+J.Estimation)} %</b> des 18-29 ans contre <b>${fmt(+O.Estimation)} %</b> des 70-79 ans ; <b>${fmt(+P.Estimation)} %</b> des personnes qui s'en sortent difficilement financièrement contre <b>${fmt(+R.Estimation)} %</b> des personnes à l'aise.`;
+ else $('#lead').textContent="Explorez comment dépression et anxiété varient selon le territoire, le sexe, l'âge et la situation sociale."}
+
+async function init(){
+ try{const [d,a,g]=await Promise.all(['episodes_depressifs_2024.csv','trouble_anxieux_generalise_2024.csv','regions.json'].map(f=>fetch('data/'+f).then(r=>{if(!r.ok)throw f;return f.endsWith('json')?r.json():r.text()})));
+  D=csv(d);A=csv(a);G=g}catch(e){$('#lead').textContent="Les données n'ont pas pu être chargées. Si vous ouvrez le fichier en local, lancez un petit serveur (python -m http.server).";return}
+ NA=A.filter(r=>r['Nouvelles régions']==='Tous');
+ G.regions.forEach(r=>{NAME[r.c]=r.n;CODE[norm(r.n)]=r.c});
+ $('#map').setAttribute('viewBox',`0 0 ${G.w} ${G.h}`);
+ $('#map').innerHTML=G.frames.map(f=>`<rect class="fr" x="${f[0]}" y="${f[1]}" width="${f[2]}" height="${f[3]}" rx="6"/>`).join('')+G.regions.map(r=>`<path class="reg" id="p${r.c}" data-c="${r.c}" d="${r.d}" tabindex="0" role="button"><title></title></path>`).join('');
+ $('#ag').innerHTML=[...new Set(D.map(r=>r["Classe d'âge"]))].sort((a,b)=>a=='Tous'?-1:b=='Tous'?1:a.localeCompare(b)).map(x=>`<option value="${x}">${x=='Tous'?'Tous âges':x}</option>`).join('');
+ $('#rg').innerHTML=Object.entries(NAME).sort((a,b)=>a[1].localeCompare(b[1])).map(([c,n])=>`<option value="${c}">${n}</option>`).join('');
+ const pick=e=>{const t=e.target.closest('[data-c]');if(t){st.sel=t.dataset.c;paint()}};
+ document.addEventListener('click',pick);
+ document.addEventListener('keydown',e=>{if(e.key=='Enter'||e.key==' '){if(e.target.closest('[data-c]')){e.preventDefault();pick(e)}}});
+ document.querySelectorAll('.tab').forEach(b=>b.onclick=()=>{st.i=b.dataset.i;paint()});
+ $('#sx').onchange=e=>{st.sx=e.target.value;paint()};$('#ag').onchange=e=>{st.ag=e.target.value;paint()};$('#rg').onchange=e=>{st.sel=e.target.value;paint()};
+ lead();profils();paint()}
+init();
+</script>
+</body>
+</html>
